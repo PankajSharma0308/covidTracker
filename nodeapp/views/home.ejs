@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Page Title</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box;}
+
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  overflow: hidden;
+  background-color: #017e7e;
+  padding: 20px 10px;
+}
+
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.header a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.header-right {
+  float: right;
+}
+
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .header-right {
+    float: none;
+  }
+}
+/* Slideshow */
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+.button3:hover {
+  background-color: white;
+  color: black;
+}
+.button {
+  background-color: #f44336; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin-left: 60vw;
+  margin-top: -30vw;;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+/* small patti down */
+.headerp {
+  overflow: hidden;
+  background-color: #017e7e;
+  height:2vw;
+  margin-top: -1.4vw;
+}
+
+/* CARD */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 60%;
+  margin-left: 4vw;
+  margin-top: 2vw;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="#default" class="logo">COVID TRACKER</a>
+    <div class="header-right">
+      <a class="active" href="/home">Home</a>
+      <a href="/about">About</a>
+      <a href="/">Insert Data</a>
+      <a href="/users/display">Display</a>
+    </div>
+  </div>
+  
+<br>
+<div class="slideshow-container">    
+    <div class="mySlides fade">
+      <img src="https://2147129bucket.s3.amazonaws.com/covid1.jpg" style="width:100%">
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="https://2147129bucket.s3.amazonaws.com/covid2.jpg" style="width:100%">
+    </div>
+    
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+    <br>
+    
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span> 
+      <span class="dot" onclick="currentSlide(2)"></span> 
+      <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
+    <%data.forEach(entry=>{%>
+    <div class="headerp">
+      <marquee style="color: black; font-size: 1.4vw;"> 
+       Total number of Deaths: <%=entry.suu%> &nbsp;
+       Total number of samples collected: <%=entry.sample%> &nbsp;
+       Total number of positive cases:  <%=entry.pos%> &nbsp;
+       Total number of negative cases:<%=entry.nege%> &nbsp;
+       Total number of discharges: <%=entry.disch%> &nbsp;
+</marquee>
+    </div>
+    <%})%>
+    <center><h2>WAYS TO AVOID THE VIRUS:</h2></center>
+    <table>
+      <tr>
+        <td style="width:60vw;">
+    <div class="card">
+      <img src="https://2147129bucket.s3.amazonaws.com/mask.jpg" alt="Avatar" style="width:100%">
+      <div class="container">
+        <h4><b>Wear a Mask</b></h4> 
+      </div>
+    </div>
+  </td>
+  <td style="width:60vw;">
+    <div class="card">
+      <img src="https://2147129bucket.s3.amazonaws.com/hand.jpg" alt="Avatar" style="width:100%">
+      <div class="container">
+        <h4><b>Wash your hands</b></h4> 
+      </div>
+    </div>
+  </td>
+  <td style="width:60vw;">
+    <div class="card">
+      <img src="https://2147129bucket.s3.amazonaws.com/distance.jpg" alt="Avatar" style="width:100%">
+      <div class="container">
+        <h4><b>Social Distance</b></h4> 
+      </div>
+    </div>
+  </td>
+  <td style="width:60vw;">
+    <div class="card">
+      <center><img src="https://2147129bucket.s3.amazonaws.com/out.png" alt="Avatar" style="width:60%"></center>
+      <div class="container">
+        <h4><b>Don't go out unnecessarily</b></h4> 
+      </div>
+    </div>
+  </td>
+    </tr>
+  </table>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          if (n > slides.length) {slideIndex = 1}    
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " active";
+        }
+        </script>
+</body>
+</html>
